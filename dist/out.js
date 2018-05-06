@@ -141,6 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}, {
 			key: 'render',
 			value: function render() {
+				var _this2 = this;
+
 				return _react2.default.createElement(
 					'div',
 					null,
@@ -149,10 +151,14 @@ document.addEventListener('DOMContentLoaded', function () {
 						null,
 						'New Person'
 					),
-					_react2.default.createElement('input', { type: 'text', placeholder: 'name', onChange: this.newPerson.bind(this) }),
+					_react2.default.createElement('input', { type: 'text', placeholder: 'name', onChange: function onChange(e) {
+							return _this2.newPerson(e);
+						} }),
 					_react2.default.createElement(
 						'button',
-						{ onClick: this.addPerson.bind(this) },
+						{ onClick: function onClick() {
+								return _this2.addPerson();
+							} },
 						'Add new'
 					),
 					_react2.default.createElement(
@@ -160,7 +166,9 @@ document.addEventListener('DOMContentLoaded', function () {
 						null,
 						'Search '
 					),
-					_react2.default.createElement('input', { onInput: this.filterUsers.bind(this) }),
+					_react2.default.createElement('input', { onInput: function onInput(e) {
+							return _this2.filterUsers(e);
+						} }),
 					_react2.default.createElement(UsersList, { users: this.state.filteredUsers })
 				);
 			}

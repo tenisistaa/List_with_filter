@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded',function(){
 			return (
 				<div>
 					<label>New Person</label>
-					<input type="text" placeholder="name" onChange={this.newPerson.bind(this)}/>
-					<button onClick={this.addPerson.bind(this)}>Add new</button>
+					<input type="text" placeholder="name" onChange={(e) => this.newPerson(e)}/>
+					<button onClick={() => this.addPerson()}>Add new</button>
 					<label>Search </label>
-					<input onInput={this.filterUsers.bind(this)} />
+					<input onInput={(e) => this.filterUsers(e)} />
 					<UsersList users={this.state.filteredUsers} />
 				</div>
 			);
