@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
 			_this.state = {
-				input: null,
+				input: '',
 				filteredUsers: allUsers
 			};
 			return _this;
@@ -117,8 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}, {
 			key: 'addPerson',
 			value: function addPerson() {
+				allUsers.push(this.state.input);
 				this.setState({
-					filteredUsers: allUsers.push(this.state.input)
+					filteredUsers: allUsers
 				});
 			}
 		}, {
@@ -146,12 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
 					_react2.default.createElement(
 						'label',
 						null,
-						'New Person '
+						'New Person'
 					),
-					_react2.default.createElement('input', { type: 'text', placeholder: 'name', onChange: this.newPerson }),
+					_react2.default.createElement('input', { type: 'text', placeholder: 'name', onChange: this.newPerson.bind(this) }),
 					_react2.default.createElement(
 						'button',
-						{ onClick: this.addPerson },
+						{ onClick: this.addPerson.bind(this) },
 						'Add new'
 					),
 					_react2.default.createElement(
@@ -177,10 +178,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			return _react2.default.createElement(
 				'ul',
 				null,
-				users.map(function (user) {
+				users.map(function (user, i) {
 					return _react2.default.createElement(
 						'li',
-						{ key: user },
+						{ key: i },
 						user
 					);
 				})

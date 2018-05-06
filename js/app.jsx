@@ -8,20 +8,21 @@ document.addEventListener('DOMContentLoaded',function(){
 		constructor() {
 			super();
 			this.state = {
-				input: null,
+				input: '',
 				filteredUsers: allUsers
 			};
 		}
 
-		newPerson(e) {
+		newPerson(e) {	
 			this.setState ({
 				input: e.target.value
 			});
 		}
 
 		addPerson() {
+			allUsers.push(this.state.input);
 			this.setState ({
-				filteredUsers: allUsers.push(this.state.input)
+				filteredUsers: allUsers
 			});
 		}
 
@@ -41,9 +42,9 @@ document.addEventListener('DOMContentLoaded',function(){
 		render() {
 			return (
 				<div>
-					<label>New Person </label>
-					<input type="text" placeholder="name" onChange={this.newPerson}/>
-					<button onClick={this.addPerson}>Add new</button>
+					<label>New Person</label>
+					<input type="text" placeholder="name" onChange={this.newPerson.bind(this)}/>
+					<button onClick={this.addPerson.bind(this)}>Add new</button>
 					<label>Search </label>
 					<input onInput={this.filterUsers.bind(this)} />
 					<UsersList users={this.state.filteredUsers} />
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded',function(){
 		if(users.length > 0){
 			return (
 				<ul>
-					{users.map(user => <li key={user}>{user}</li>)}
+					{users.map((user,i) => <li key={i}>{user}</li>)}
 				</ul>
 			);
 		}
