@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 const allUsers = ['Michał', 'Kasia', 'Jacek', 'Marta', 'Tomek', "Ania"]
 
@@ -53,7 +54,7 @@ class App extends React.Component {
   }
 };
 
-const UsersList = ({ users }) => {
+export const UsersList = ({ users }) => {
   if(users.length > 0){
     return (
       <ul>
